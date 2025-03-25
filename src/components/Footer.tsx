@@ -76,26 +76,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mb-10">
-          <h3 className="text-lg font-semibold mb-4 text-center">Technology Partners</h3>
-          <div className="flex flex-wrap justify-center gap-8 items-center">
-            <div className="h-12 w-auto opacity-60 hover:opacity-100 transition-opacity">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="OpenAI" className="h-full w-auto" />
-            </div>
-            <div className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity">
-              <img src="https://cdn.zapier.com/zapier/images/logos/zapier-logo.svg" alt="Zapier" className="h-full w-auto" />
-            </div>
-            <div className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" className="h-full w-auto" />
-            </div>
-            <div className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/DocuSign_logo.svg" alt="DocuSign" className="h-full w-auto" />
-            </div>
-            <div className="h-9 w-auto opacity-60 hover:opacity-100 transition-opacity">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Microsoft Azure" className="h-full w-auto" />
-            </div>
-          </div>
-        </div>
+        
         
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">

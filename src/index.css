@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -264,4 +265,32 @@
   .grid {
     @apply gap-6;
   }
+}
+html {
+  font-size: 18px; /* Increases base font size for the whole site */
+  zoom: 1.1; /* Slightly zooms in everything */
+}
+
+body {
+  max-width: 1400px; /* Prevents excessive stretching on large screens */
+  margin: auto;
+  padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  html {
+    zoom: 1.05; /* Slightly smaller zoom for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    zoom: 1.0; /* Normal zoom for mobile screens */
+    font-size: 16px; /* Adjusts font size for readability */
+  }
+}
+section {
+  padding: 60px 5%;
+  max-width: 1200px;
+  margin: auto;
 }
