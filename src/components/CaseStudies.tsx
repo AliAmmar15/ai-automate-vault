@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { Briefcase, ShoppingBag, BarChart } from "lucide-react";
 
 const CaseStudies = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -29,83 +30,38 @@ const CaseStudies = () => {
 
   const caseStudies = [
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-          />
-        </svg>
-      ),
+      icon: <Briefcase className="h-10 w-10" />,
       name: "Davidson & Partners Law Firm",
       industry: "Legal",
       results: "20 hours saved monthly",
-      description:
-        "We automated the entire contract review and signing process for this mid-sized law firm, reducing their document processing time by 75% and eliminating manual errors in client paperwork.",
-      quote:
-        "Velonus transformed our contract workflow from a time-consuming bottleneck to a streamlined process. Our attorneys now focus on high-value client work instead of administrative tasks.",
+      challenge: "The firm was drowning in paperwork with attorneys spending 5+ hours weekly on contract reviews and manual document handling, delaying client work and limiting growth.",
+      solution: "We implemented a custom AI document automation system that extracts key information, generates draft contracts, and manages the signature workflow.",
+      outcome: "Davidson reduced contract processing time by 75%, eliminated manual errors, and freed up 20+ hours per month for their attorneys to focus on billable client work.",
+      quote: "Velonus transformed our contract workflow from a time-consuming bottleneck to a streamlined process. Our attorneys now focus on high-value client work instead of administrative tasks.",
       person: "Jennifer Davidson",
       title: "Managing Partner",
     },
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-          />
-        </svg>
-      ),
+      icon: <ShoppingBag className="h-10 w-10" />,
       name: "Urban Threads Apparel",
       industry: "E-Commerce",
       results: "35% increase in recovered carts",
-      description:
-        "Our AI-driven email automation system helped this clothing retailer recover abandoned carts and provide personalized product recommendations, resulting in significant revenue growth.",
-      quote:
-        "The automated follow-up sequences feel genuinely personalized to our customers. We've seen not just more recovered carts but higher average order values from returning customers.",
+      challenge: "The clothing retailer struggled with high cart abandonment rates and had a manual, generic email follow-up process that yielded poor results.",
+      solution: "We built an AI-driven email automation system that analyzes customer behavior, sends personalized follow-ups, and provides targeted product recommendations.",
+      outcome: "Urban Threads saw a 35% increase in recovered abandoned carts and a 28% higher average order value from returning customers.",
+      quote: "The automated follow-up sequences feel genuinely personalized to our customers. We've seen not just more recovered carts but higher average order values from returning customers.",
       person: "Michael Chen",
       title: "E-commerce Director",
     },
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-          />
-        </svg>
-      ),
+      icon: <BarChart className="h-10 w-10" />,
       name: "Pulse Digital Agency",
       industry: "Marketing",
       results: "60% reduction in reporting time",
-      description:
-        "We implemented an automated data collection and reporting system that pulls information from multiple platforms into comprehensive client dashboards, saving their team hours of manual work each week.",
-      quote:
-        "Our team used to spend Fridays creating reports. Now the data flows automatically, and we can focus on strategy and creative work that actually moves the needle for our clients.",
+      challenge: "The agency's team spent entire Fridays creating client reports manually, pulling data from multiple platforms and formatting reports individually.",
+      solution: "We implemented an automated data collection and visualization system that pulls from Google Analytics, social platforms, and ad accounts into unified dashboards.",
+      outcome: "Pulse reduced reporting time by 60%, eliminated human error in data collection, and provided clients with real-time access to performance metrics.",
+      quote: "Our team used to spend Fridays creating reports. Now the data flows automatically, and we can focus on strategy and creative work that actually moves the needle for our clients.",
       person: "Sarah Williams",
       title: "Operations Manager",
     },
@@ -166,8 +122,25 @@ const CaseStudies = () => {
             </div>
             <div className="mb-10">
               <h3 className="text-2xl font-bold mb-4">{caseStudies[activeIndex].name}</h3>
-              <p className="text-muted-foreground">{caseStudies[activeIndex].description}</p>
+              
+              <div className="grid grid-cols-1 gap-6 mb-6">
+                <div className="bg-white/5 p-5 rounded-lg border border-white/10">
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Challenge:</h4>
+                  <p className="text-muted-foreground">{caseStudies[activeIndex].challenge}</p>
+                </div>
+                
+                <div className="bg-white/5 p-5 rounded-lg border border-white/10">
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Solution:</h4>
+                  <p className="text-muted-foreground">{caseStudies[activeIndex].solution}</p>
+                </div>
+                
+                <div className="bg-white/5 p-5 rounded-lg border border-white/10">
+                  <h4 className="text-lg font-semibold mb-2 text-primary">Result:</h4>
+                  <p className="text-muted-foreground">{caseStudies[activeIndex].outcome}</p>
+                </div>
+              </div>
             </div>
+            
             <div className="border-l-4 border-primary pl-6 mb-8">
               <p className="italic text-lg mb-4">{caseStudies[activeIndex].quote}</p>
               <div>
@@ -175,6 +148,7 @@ const CaseStudies = () => {
                 <p className="text-sm text-muted-foreground">{caseStudies[activeIndex].title}</p>
               </div>
             </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 { label: "Implementation Time", value: "4 weeks" },

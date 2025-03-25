@@ -44,11 +44,11 @@ const Hero = () => {
           </div>
           
           <h1 className="reveal text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6">
-            Unlock the Power of <span className="highlight">AI Automation</span> for Your Business
+            AI-Powered Business Automation: <span className="highlight">Save Time, Scale Faster.</span>
           </h1>
           
           <p className="reveal text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl">
-            Eliminate manual tasks, streamline operations, and boost efficiency with AI-driven business automation for{' '}
+            Eliminate repetitive tasks, optimize workflows, and boost efficiency with custom AI automation for{' '}
             <span className="text-foreground font-medium">
               <TextTransition 
                 texts={[
@@ -65,8 +65,8 @@ const Hero = () => {
           </p>
           
           <div className="reveal flex flex-col sm:flex-row gap-4 mb-16">
-            <Button size="lg" className="btn-shine">
-              Get a Free AI Automation Audit
+            <Button size="lg" className="btn-shine" onClick={() => document.getElementById('contact')?.scrollIntoView()}>
+              Get a Free AI Audit
             </Button>
             <Button variant="outline" size="lg" onClick={() => document.getElementById('services')?.scrollIntoView()}>
               See How It Works

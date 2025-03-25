@@ -1,8 +1,14 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
+import { 
+  Users, MessageSquare, CreditCard, FileText, 
+  Calendar, Workflow, ChevronRight 
+} from "lucide-react";
 
 const Services = () => {
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -28,138 +34,62 @@ const Services = () => {
 
   const services = [
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-          />
-        </svg>
-      ),
+      icon: <Users className="h-8 w-8" />,
       title: "Lead Generation Automation",
       description:
         "Automate prospecting, lead qualification, and follow-up sequences integrated with your CRM.",
       features: ["AI-driven outreach", "Automatic follow-ups", "CRM integration", "Performance analytics"],
+      expanded: "Our lead generation automation uses AI to identify potential clients, qualify leads based on your criteria, and execute personalized follow-up sequences. The system integrates with your existing CRM to ensure all data is synchronized and actionable, while providing comprehensive analytics on campaign performance."
     },
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-          />
-        </svg>
-      ),
+      icon: <MessageSquare className="h-8 w-8" />,
       title: "AI-Powered Customer Support",
       description:
         "Deploy intelligent chatbots and automated email responses to provide 24/7 customer service.",
       features: ["Smart chatbots", "Automated email responses", "Ticket prioritization", "Customer data analysis"],
+      expanded: "Our AI customer support system handles routine inquiries through intelligent chatbots, automatically responds to common email requests, and prioritizes tickets that need human attention. The system learns from each interaction, continuously improving its responses while collecting valuable customer insights."
     },
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-          />
-        </svg>
-      ),
+      icon: <CreditCard className="h-8 w-8" />,
       title: "Invoice & Payment Automation",
       description:
         "Streamline the entire billing process from invoice generation to payment collection and reconciliation.",
       features: ["Automated billing", "Payment reminders", "Stripe integration", "Financial reporting"],
+      expanded: "Our invoice automation system generates and sends invoices based on your business rules, sends strategic payment reminders to maximize collections, integrates seamlessly with Stripe for payment processing, and provides comprehensive financial reporting to track your revenue streams."
     },
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          />
-        </svg>
-      ),
+      icon: <FileText className="h-8 w-8" />,
       title: "E-Signature & Document Automation",
       description:
         "Automate document generation, delivery, and e-signature collection for contracts and legal paperwork.",
       features: ["Template creation", "Dynamic document generation", "DocuSign integration", "Secure storage"],
+      expanded: "Our document automation system creates custom templates for your contracts and legal documents, dynamically generates personalized documents based on client data, integrates with DocuSign for legally binding e-signatures, and securely stores all documents with appropriate access controls."
     },
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-          />
-        </svg>
-      ),
+      icon: <Calendar className="h-8 w-8" />,
       title: "Real Estate & Appointment Scheduling",
       description:
         "Automate property listing management, lead tracking, and appointment scheduling for real estate operations.",
       features: ["Property listing syncing", "Lead assignment", "Calendar integration", "Automated follow-ups"],
+      expanded: "Our real estate automation system synchronizes property listings across multiple platforms, automatically assigns leads to the appropriate agents based on expertise and availability, integrates with your calendar systems to avoid scheduling conflicts, and executes personalized follow-up sequences to nurture leads."
     },
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
-          />
-        </svg>
-      ),
+      icon: <Workflow className="h-8 w-8" />,
       title: "Workflow & Integration Solutions",
       description:
         "Connect your existing tools and platforms to create seamless automated workflows across your business.",
       features: ["API integrations", "Zapier connections", "Custom webhooks", "Data synchronization"],
+      expanded: "Our workflow automation connects all your business tools through custom API integrations, Zapier connections for no-code automation, webhook triggers for real-time data flow, and comprehensive data synchronization to ensure consistent information across all platforms."
     },
   ];
+
+  const toggleExpandService = (index: number) => {
+    if (expandedService === index) {
+      setExpandedService(null);
+    } else {
+      setExpandedService(index);
+    }
+  };
 
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-black/50 to-background relative">
@@ -190,7 +120,7 @@ const Services = () => {
               </div>
               <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
               <p className="text-muted-foreground mb-6">{service.description}</p>
-              <ul className="space-y-2">
+              <ul className="space-y-2 mb-6">
                 {service.features.map((feature, i) => (
                   <li key={i} className="flex items-start">
                     <svg
@@ -209,6 +139,22 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
+
+              {expandedService === index && (
+                <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10 mb-4 transition-all duration-300 animate-fade-in">
+                  <p className="text-sm text-muted-foreground">{service.expanded}</p>
+                </div>
+              )}
+
+              <Button 
+                variant="outline"
+                size="sm"
+                className="w-full flex items-center justify-center gap-2"
+                onClick={() => toggleExpandService(index)}
+              >
+                {expandedService === index ? "Show Less" : "See More Details"}
+                <ChevronRight className={`h-4 w-4 transition-transform ${expandedService === index ? 'rotate-90' : ''}`} />
+              </Button>
             </div>
           ))}
         </div>

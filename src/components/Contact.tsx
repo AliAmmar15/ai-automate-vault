@@ -10,8 +10,53 @@ const Contact = () => {
     name: '',
     email: '',
     company: '',
+    industry: '',
+    businessSize: '',
+    painPoint: '',
+    budget: '',
     message: ''
   });
+
+  const industryOptions = [
+    "Legal",
+    "E-commerce",
+    "Real Estate",
+    "Marketing",
+    "Healthcare",
+    "Finance",
+    "Education",
+    "Manufacturing",
+    "Consulting",
+    "Technology",
+    "Other"
+  ];
+
+  const businessSizeOptions = [
+    "Solo/Freelancer",
+    "Small (2-10 employees)",
+    "Medium (11-50 employees)",
+    "Large (51-200 employees)",
+    "Enterprise (201+ employees)"
+  ];
+
+  const painPointOptions = [
+    "Lead Generation",
+    "Customer Support",
+    "Billing & Payments",
+    "Document Processing",
+    "Appointment Scheduling",
+    "Data Entry & Management",
+    "Reporting & Analytics",
+    "Multiple Areas"
+  ];
+
+  const budgetOptions = [
+    "Under $500/month",
+    "$500-$2,000/month",
+    "$2,000-$5,000/month",
+    "$5,000+/month",
+    "Not sure yet"
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,7 +81,7 @@ const Contact = () => {
     };
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -56,6 +101,10 @@ const Contact = () => {
         name: '',
         email: '',
         company: '',
+        industry: '',
+        businessSize: '',
+        painPoint: '',
+        budget: '',
         message: ''
       });
       setSubmitting(false);
@@ -153,47 +202,121 @@ const Contact = () => {
             </div>
             
             <div className="reveal glass p-8 rounded-2xl border border-white/10">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                    placeholder="Your name"
-                    required
-                  />
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2">Business Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                      placeholder="you@yourcompany.com"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium mb-2">Company Name</label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                      placeholder="Your company"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="industry" className="block text-sm font-medium mb-2">Industry</label>
+                    <select
+                      id="industry"
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                      required
+                    >
+                      <option value="" disabled>Select your industry</option>
+                      {industryOptions.map((option, index) => (
+                        <option key={index} value={option}>{option}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="businessSize" className="block text-sm font-medium mb-2">Business Size</label>
+                    <select
+                      id="businessSize"
+                      name="businessSize"
+                      value={formData.businessSize}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                      required
+                    >
+                      <option value="" disabled>Select team size</option>
+                      {businessSizeOptions.map((option, index) => (
+                        <option key={index} value={option}>{option}</option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="painPoint" className="block text-sm font-medium mb-2">Biggest Pain Point</label>
+                    <select
+                      id="painPoint"
+                      name="painPoint"
+                      value={formData.painPoint}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                      required
+                    >
+                      <option value="" disabled>Select biggest challenge</option>
+                      {painPointOptions.map((option, index) => (
+                        <option key={index} value={option}>{option}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">Business Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                  <label htmlFor="budget" className="block text-sm font-medium mb-2">Budget Range</label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    value={formData.budget}
                     onChange={handleChange}
                     className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                    placeholder="you@yourcompany.com"
                     required
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium mb-2">Company Name</label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                    placeholder="Your company"
-                    required
-                  />
+                  >
+                    <option value="" disabled>Select your budget range</option>
+                    {budgetOptions.map((option, index) => (
+                      <option key={index} value={option}>{option}</option>
+                    ))}
+                  </select>
                 </div>
                 
                 <div>

@@ -31,6 +31,7 @@ const Pricing = () => {
   const plans = [
     {
       name: "Starter",
+      setupFee: 1000,
       price: billingPeriod === 'monthly' ? 500 : 5000,
       description: "Get started with AI automation for your core business workflow",
       features: [
@@ -45,6 +46,7 @@ const Pricing = () => {
     },
     {
       name: "Growth",
+      setupFee: 2500,
       price: billingPeriod === 'monthly' ? 1500 : 15000,
       description: "Advanced automation for growing businesses with multiple needs",
       features: [
@@ -61,6 +63,7 @@ const Pricing = () => {
     },
     {
       name: "Enterprise",
+      setupFee: 5000,
       price: billingPeriod === 'monthly' ? 5000 : 50000,
       description: "Comprehensive automation solutions for complex organizations",
       features: [
@@ -132,11 +135,17 @@ const Pricing = () => {
                 )}
                 <div className="mb-6">
                   <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline mb-4">
-                    <span className="text-4xl font-bold">${plan.price}</span>
-                    <span className="text-muted-foreground ml-2">
-                      /{billingPeriod === 'monthly' ? 'month' : 'year'}
-                    </span>
+                  <div className="flex flex-col mb-2">
+                    <div className="flex items-baseline mb-1">
+                      <span className="text-sm text-muted-foreground">One-time setup fee: </span>
+                      <span className="text-md font-semibold ml-1">${plan.setupFee}</span>
+                    </div>
+                    <div className="flex items-baseline">
+                      <span className="text-4xl font-bold">${plan.price}</span>
+                      <span className="text-muted-foreground ml-2">
+                        /{billingPeriod === 'monthly' ? 'month' : 'year'}
+                      </span>
+                    </div>
                   </div>
                   <p className="text-muted-foreground text-sm">{plan.description}</p>
                 </div>
