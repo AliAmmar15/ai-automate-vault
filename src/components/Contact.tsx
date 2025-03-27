@@ -1,6 +1,8 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { sendEmail } from "@/api/send-email";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -16,18 +18,31 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
-    setTimeout(() => {
-      toast({ title: "Message Sent", description: "We've received your message and will get back to you soon." });
+    try {
+      // Send the email using our API
+      await sendEmail(formData);
+      
+      toast({ 
+        title: "Message Sent", 
+        description: "We've received your message and will get back to you soon." 
+      });
 
       // Reset form with only necessary fields
       setFormData({ name: "", email: "", company: "", message: "" });
-
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send your message. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
       setSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (

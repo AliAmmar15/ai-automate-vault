@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { MessageCircle, X, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { sendChatMessage } from '@/api/chatbot';
 
 type Message = {
   text: string;
@@ -46,7 +47,7 @@ const Chatbot = () => {
     }
   }, [messages, isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!input.trim()) return;
@@ -62,31 +63,42 @@ const Chatbot = () => {
     setInput("");
     setIsTyping(true);
     
-    // Simulate AI response
-    setTimeout(() => {
-      const responses = [
-        "I'd be happy to help you automate your business workflows!",
-        "Great question! Our automation solutions can help reduce manual tasks by up to 80%.",
-        "We offer custom integrations with over 100+ popular business tools and platforms.",
-        "Typically, we can implement a basic automation solution within 2-4 weeks.",
-        "The pricing depends on your specific needs. Would you like to discuss this with our sales team?",
-        "I can connect you with one of our automation specialists to discuss your requirements in detail."
-      ];
+    try {
+      // Call the API to get a response from OpenAI
+      const response = await sendChatMessage(input, messages);
       
       const aiMessage: Message = {
-        text: responses[Math.floor(Math.random() * responses.length)],
+        text: response,
         isUser: false,
         timestamp: new Date(),
       };
       
       setMessages((prev) => [...prev, aiMessage]);
-      setIsTyping(false);
       
       toast({
         title: "New message",
         description: "You have a new response in the chat"
       });
-    }, 1500);
+    } catch (error) {
+      console.error("Error getting AI response:", error);
+      
+      // Show an error message in the chat
+      const errorMessage: Message = {
+        text: "Sorry, I couldn't process your request. Please try again later.",
+        isUser: false,
+        timestamp: new Date(),
+      };
+      
+      setMessages((prev) => [...prev, errorMessage]);
+      
+      toast({
+        title: "Error",
+        description: "Failed to get a response from the AI",
+        variant: "destructive"
+      });
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   return (
