@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -9,6 +9,7 @@ import FAQ from '@/components/FAQ';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   useEffect(() => {
@@ -67,6 +68,7 @@ const Index = () => {
       <Pricing />
       <Contact />
       <Footer />
+      <Toaster />
     </div>
   );
 };

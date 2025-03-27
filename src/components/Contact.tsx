@@ -1,7 +1,11 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { initializeEmailJS, sendEmail } from '@/utils/EmailService';
+
+const EMAILJS_USER_ID = 'YOUR_USER_ID';
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -59,6 +63,8 @@ const Contact = () => {
   ];
 
   useEffect(() => {
+    initializeEmailJS(EMAILJS_USER_ID);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -86,17 +92,18 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      await sendEmail(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData);
+      
       toast({
         title: "Message Sent",
         description: "We've received your message and will get back to you soon.",
       });
+      
       setFormData({
         name: '',
         email: '',
@@ -107,8 +114,16 @@ const Contact = () => {
         budget: '',
         message: ''
       });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
       setSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -143,7 +158,7 @@ const Contact = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={1.5}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
                       />
                     </svg>
                   </div>
