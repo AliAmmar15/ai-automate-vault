@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { initializeEmailJS, sendEmail } from '@/utils/EmailService';
 
-const EMAILJS_USER_ID = 'YOUR_USER_ID';
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_USER_ID = 'znd0sXMqnDHGUmi_q';
+const EMAILJS_SERVICE_ID = 'service_wxk15qv';
+const EMAILJS_TEMPLATE_ID = 'template_3a18ru8';
 
 const Contact = () => {
   const { toast } = useToast();
