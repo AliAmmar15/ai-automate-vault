@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
@@ -8,7 +9,7 @@ import FAQ from '@/components/FAQ';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
- // Ensure correct import path
+import Chatbot from '@/components/Chatbot';
 
 const Index = () => {
   useEffect(() => {
@@ -62,11 +63,10 @@ const Index = () => {
       <Contact />
       <Footer />
 
-      {/* Chatbot should be here and available site-wide */}
-      
+      {/* Chatbot component */}
+      <Chatbot />
     </div>
   );
 };
 
-// ✅ Only ONE default export
 export default Index;
