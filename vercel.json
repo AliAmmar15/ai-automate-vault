@@ -7,7 +7,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "env": {
-    "VITE_OPENAI_API_KEY": "@vite_openai_api_key",
     "VITE_RESEND_API_KEY": "@vite_resend_api_key"
   }
 }

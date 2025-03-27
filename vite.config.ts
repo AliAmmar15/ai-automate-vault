@@ -23,7 +23,6 @@ export default defineConfig(({ mode }) => ({
   // Define environment variables with proper VITE_ prefix
   define: {
     'process.env': {},
-    'import.meta.env.VITE_OPENAI_API_KEY': JSON.stringify(process.env.VITE_OPENAI_API_KEY),
     'import.meta.env.VITE_RESEND_API_KEY': JSON.stringify(process.env.VITE_RESEND_API_KEY),
   },
 }));
