@@ -1,6 +1,6 @@
 
-// Get API key from environment variables
-const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY || process.env.RESEND_API_KEY;
+// Get API key from environment variables with the VITE_ prefix
+const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY;
 
 interface EmailData {
   name: string;
