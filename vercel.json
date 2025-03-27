@@ -5,8 +5,5 @@
   ],
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "env": {
-    "VITE_RESEND_API_KEY": "@vite_resend_api_key"
-  }
+  "installCommand": "npm install"
 }

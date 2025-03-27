@@ -1,8 +1,8 @@
 
 import OpenAI from 'openai';
 
-// Get the API key from environment variables with the VITE_ prefix
-const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+// Get the API key from environment variables
+const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY || process.env.OPENAI_API_KEY;
 
 // Initialize the OpenAI client
 const openai = new OpenAI({
@@ -20,7 +20,7 @@ export async function sendChatMessage(message: string, previousMessages: Message
   try {
     if (!OPENAI_API_KEY) {
       console.error("OpenAI API key is missing");
-      return "Sorry, the AI service is not configured properly. Please check your environment variables.";
+      return "Sorry, the AI service is not configured properly. Please contact the administrator.";
     }
 
     // Convert our message format to OpenAI's format

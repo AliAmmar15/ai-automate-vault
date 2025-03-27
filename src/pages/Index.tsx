@@ -9,6 +9,7 @@ import FAQ from '@/components/FAQ';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Chatbot from '@/components/Chatbot';
 
 const Index = () => {
   useEffect(() => {
@@ -61,6 +62,9 @@ const Index = () => {
       <Pricing />
       <Contact />
       <Footer />
+
+      {/* Chatbot component */}
+      <Chatbot />
     </div>
   );
 };
