@@ -9,7 +9,6 @@ import FAQ from '@/components/FAQ';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import Chatbot from '@/components/Chatbot';
 
 const Index = () => {
   useEffect(() => {
@@ -22,13 +21,18 @@ const Index = () => {
           }
         });
       },
-      { root: null, threshold: 0.1 }
+      {
+        root: null,
+        threshold: 0.1,
+      }
     );
 
     const elements = document.querySelectorAll('.reveal');
     elements.forEach((el) => observer.observe(el));
 
-    return () => elements.forEach((el) => observer.unobserve(el));
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
   }, []);
 
   useEffect(() => {
@@ -36,12 +40,13 @@ const Index = () => {
     const handleHashLinkClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const link = target.closest('a');
-
+      
       if (link && link.hash && link.hash.length > 1) {
         e.preventDefault();
         const targetEl = document.querySelector(link.hash);
         if (targetEl) {
           targetEl.scrollIntoView({ behavior: 'smooth' });
+          // Update URL hash without scrolling
           window.history.pushState(null, '', link.hash);
         }
       }
@@ -62,9 +67,6 @@ const Index = () => {
       <Pricing />
       <Contact />
       <Footer />
-
-      {/* Chatbot component */}
-      <Chatbot />
     </div>
   );
 };
